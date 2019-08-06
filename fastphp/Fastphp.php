@@ -81,4 +81,28 @@ class Fastphp{
 		//上面一行等同于 $dispatch->$actionName($param)
 		//call_user_func_array — 调用回调函数，并把一个数组参数作为回调函数的参数
 	}
+
+	public function loadClass($classname){
+		$classMap = $this->classMap();
+
+		if(isset($classMap[$className])){
+			//isset — 检测变量是否已设置并且非 NULL
+
+			$file = $classMap[$className];
+
+		}elseif (strpos($className,'\\')!== false) {
+			//strpos — 查找字符串首次出现的位置
+
+			$file = APP_PATH.str_replace('\\', '/', $className).'.app';
+
+			if (!is_file($file)) {
+				return;
+			}
+			
+		}else{
+			return;
+
+		}
+		include $file;
+	}
 }
