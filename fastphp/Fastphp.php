@@ -105,4 +105,16 @@ class Fastphp{
 		}
 		include $file;
 	}
+
+	protected function classMap(){
+		return[
+			'fastphp\base\Contreller' => CORE_PATH.'/base/Contreller.php';
+			'fastphp\base\Model' => CORE_PATH.'/base/Model.php';
+			'fastphp\base\View' => CORE_PATH.'/base/View.php';
+			'fastphp\db\Db' => CORE_PATH.'/db/Db.php';
+			'fastphp\db\Sql' => CORE_PATH.'/db/Sql.php';
+
+		];
+
+	}
 }
