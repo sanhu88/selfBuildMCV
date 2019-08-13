@@ -24,3 +24,6 @@
  		$this->_view->render();
  	}
  }
+/*Controller 类用assign()方法实现把变量保存到View对象中。
+
+这样，在调用$this->render() 后视图文件就能显示这些变量。*/
