@@ -45,8 +45,13 @@ class Sql{
 
 	public function fetchAll(){
 
-		$sql = sprintf(format);
+		$sql = sprintf("select * from `%s` %s",$this->table,$this->filter);
 		//sprintf 把百分号（%）符号替换成一个作为参数进行传递的变量
+		$sth = Db::pdo()->prepare($sql);
+		$sth = $this->formatParam($sth,$this->param);
+		$sth ->execute();
+
+		return $sth->fetch();
 	}
 
 }
