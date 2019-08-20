@@ -100,4 +100,51 @@ class Sql{
 		return $sth->rowCount();
 	}
 
+
+
+	public function formatParam(PDOStatement $sth,$params=array()){
+
+		foreach ($params as $param => &$value) {
+			$param = is_int($param)?$param + 1 : ':'.ltrim($param,':');
+			//ltrim() 函数移除字符串左侧的空白字符或其他预定义字符
+			#rtrim() - 移除字符串右侧的空白字符或其他预定义字符
+			#trim() - 移除字符串两侧的空白字符或其他预定义字符
+			$sth->bindParam($param,$value);
+
+		}
+
+		return $sth;
+	}
+
+
+	public function formatInsert($data){
+
+		$fields = array();
+		$names = array();
+
+		foreach ($data as $key => $value) {
+			$fields[] = sprintf("`%s`",$key);
+			$names[] = sprintf(":%s",$key);
+
+		}
+
+		$field = implode(',',$fields);
+		$name = implode(',',$names);
+
+		return sprintf("(%s) values (%s)",$field,$name);
+	}
+
+
+	public function formatUpdate($data){
+
+		$fields = array();
+
+		foreach ($data as $key => $value) {
+			$fields[] = sprintf("`%s` = :%s",$key,$key);
+		}
+
+		return implode(',',$fields);
+
+	}
+
 }
