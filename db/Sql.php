@@ -51,7 +51,33 @@ class Sql{
 		$sth = $this->formatParam($sth,$this->param);
 		$sth ->execute();
 
+		return $sth->fetchAll();
+	}
+
+	public function fetch(){
+
+		$sql = sprintf("select * from `%s` %s",$this->table,$this->filter);
+		
+		$sth = Db::pdo()->prepare($sql);
+		$sth = $this->formatParam($sth,$this->param);
+		$sth ->execute();
+
 		return $sth->fetch();
+	}
+
+
+	public function delete($id){
+
+		$sql = sprintf("delete from `%s` where `%s` = :%s",$this->table,$this->primary,$this->primary);
+		$sth = Db::pdo()->prepare($sql);
+		$sth = $this->formatParam($sth,[$this->primary => $id]);
+		$sth->execute();
+
+		return $sth->rowCount();
+	}
+
+	public function add($data){
+		
 	}
 
 }
