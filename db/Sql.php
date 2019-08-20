@@ -88,4 +88,16 @@ class Sql{
 		return $sth->rowCount();
 	}
 
+	public function update($data){
+
+		$sql = sprintf("update `%s` set %s %s",$this->table,$this->formatUpdate($data),$this->filter);
+
+		$sth = Db::pdo()->prepare(sql);
+		$sth = $this->formatParam($sth,$data);
+		$sth = $this->formatParam($sth,$this->param);
+		$sth->execute();
+
+		return $sth->rowCount();
+	}
+
 }
