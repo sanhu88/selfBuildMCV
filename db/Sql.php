@@ -78,6 +78,14 @@ class Sql{
 
 	public function add($data){
 		
+		$sql = sprintf("insert into `%s` %s",$this->table,$this->formatInsert($data));
+
+		$sth = Db::pdo()->prepare($sql);
+		$sth = $this->formatParam($sth,$data);
+		$sth = $this->formatParam($sth,$this->param);
+		$sth->execute();
+
+		return $sth->rowCount();
 	}
 
 }

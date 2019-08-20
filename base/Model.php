@@ -15,6 +15,9 @@ class Model extends Sql{
 
 			//删除类名最后的Model字符
 			$this->model = substr($this->model,0,-5);
+
+			//数据库表明与类名一致
+			$this->table = strtolower($this->model);
 		}
 	}
 }
