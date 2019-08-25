@@ -1,12 +1,12 @@
 CREATE DATABASE `project` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `project`;
-
+DROP TABLE if exists `item`;
 CREATE TABLE `item`(
 	`id` int(11) NOT NULL auto_increment,
 	`item_name` varchar(255) NOT NULL,
 	PRIMARY KEY(`id`)
 
-)ENGINE=InnoDB AUTO_INCREMENT DEFAULT CHARSET=utf8;
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 INSERT INTO `item` VALUES(1,'Hello World!');
 INSERT INTO `item` VALUES(2,'Lets go');
