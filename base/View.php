@@ -40,9 +40,15 @@ class View
 		}
 
 		if (is_file($controllerLayout)) {
-			include($controllerLayout)
+			include($controllerLayout);
 		}else{
-			
+			echo "<h1>无法加载视图文件</h1>";
+		}
+
+		if (is_file($controllerFooter)) {
+			include($controllerFooter);
+		}else{
+			include ($defaultFooter);
 		}
 
 
