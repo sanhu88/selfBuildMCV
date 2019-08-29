@@ -4,7 +4,7 @@ namespace app\controllers;
 use fastphp\base\Controller;
 use app\models\ItemModel;
 
-class ItenController extends Controller{
+class ItemController extends Controller{
 
 	public function index(){
 		$keyword = isset($_GET['keyword'])?$_GET('keyword'):'';
@@ -20,7 +20,7 @@ class ItenController extends Controller{
 
 		$this->assign('title','全部条目');
 		$this->assign('keuword',$keyword);
-		$this->assign('items',$itens);
+		$this->assign('items',$items);
 
 		$this->render();
 	}
