@@ -12,5 +12,16 @@
 		<th>操作</th>
 	</tr>
 
-	<?php 
-</table>
+	<?php foreach ($items as $item): ?>
+		<tr>
+			<td><?php echo $item['id'] ?></td>
+			<td><?php echo $item['item_name'] ?></td>
+			<td>
+				<a href="/item/manage/<?php echo $itme['id'] ?>">编辑</a>
+				<a href="/item/delete/<?php echo $itme['id'] ?>">删除</a>
+			</td>
+		</tr>
+
+	<?php endforeach ?>
+
+	</table>
