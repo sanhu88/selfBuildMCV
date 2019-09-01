@@ -8,4 +8,4 @@
 <body><h1><?php echo $title ?></h1>
 
 
-<!--</body> -->
+<!--</body></html> in footer.php -->
